@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation · M.James & Khurin In</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f6f2;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* ----- header fullscreen dengan overlay ----- */
+    header {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    header img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    header .content {
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 2s ease;
+      padding: 0 1rem;
+    }
+
+    header .content p:first-child {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-weight: 300;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      margin: 0.5rem 0 0.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    header .content p:last-child {
+      font-size: 1.3rem;
+      font-weight: 300;
+      border-top: 1px solid rgba(255,255,255,0.3);
+      padding-top: 1rem;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    /* ----- sections ----- */
+    section {
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      color: #4a3b2f;
+      font-weight: 600;
+    }
+
+    .photo {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 24px;
+      margin: 30px auto;
+      display: block;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      aspect-ratio: 1/1;
+    }
+
+    .card {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 30px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+      margin: 30px auto;
+      max-width: 480px;
+      transition: 0.2s;
+    }
+
+    .card h3 {
+      font-size: 1.8rem;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 1.5rem;
+      color: #6b4f3a;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      margin: 0.75rem 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      margin: 12px 6px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      background: transparent;
+    }
+
+    .btn-primary {
+      background: #8c5a3c;
+      color: white;
+      box-shadow: 0 6px 12px rgba(140, 90, 60, 0.2);
+    }
+
+    .btn-primary:hover {
+      background: #6b3e26;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px rgba(107, 62, 38, 0.25);
+    }
+
+    .btn-outline {
+      border: 2px solid #8c5a3c;
+      color: #8c5a3c;
+      background: white;
+    }
+
+    .btn-outline:hover {
+      background: #8c5a3c;
+      color: white;
+      border-color: #8c5a3c;
+    }
+
+    /* form styling */
+    input, textarea {
+      width: 90%;
+      padding: 14px 18px;
+      margin: 10px 0 12px;
+      border-radius: 50px;
+      border: 1px solid #ddd;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      background: #fefefe;
+      transition: 0.2s;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #8c5a3c;
+      box-shadow: 0 0 0 3px rgba(140,90,60,0.2);
+    }
+
+    textarea {
+      border-radius: 30px;
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    footer {
+      padding: 50px 20px 40px;
+      font-size: 0.95rem;
+      color: #6a5e54;
+      background: #ece8df;
+      margin-top: 20px;
+      border-top-left-radius: 40px;
+      border-top-right-radius: 40px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* placeholder untuk foto – jika gambar tidak ada */
+    img {
+      background: #d9d0c0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO SECTION -->
+  <header>
+    <!-- Jika gambar tidak tersedia, tampilkan warna solid dengan inisial -->
+    <img src="image/1.jpeg" alt="M.James & Khurin In prewedding" onerror="this.style.display='none'; this.parentNode.style.background='linear-gradient(145deg, #3a2c25, #6b4f3a)'; this.parentNode.classList.add('fallback-header');">
+    <div class="content">
+      <p>The Wedding Of</p>
+      <h1>M.James & Khurin In</h1>
+      <p>20 Juni 2026</p>
+    </div>
+  </header>
+
+  <!-- PEMBUKA & FOTO -->
+  <section>
+    <h2>Assalamu’alaikum Warahmatullahi Wabarakatuh</h2>
+    <p style="max-width: 550px; margin-left: auto; margin-right: auto;">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.</p>
+
+    <img src="image/2.jpeg" alt="Mempelai berdua" class="photo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNlM2Q5Y2EiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1mYW1pbHk9IlBvcHBpbnMsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2YjUwM2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5KQU1FUyAmIEtIVVJJTjwvdGV4dD48L3N2Zz4=';">
+
+    <!-- KARTU AKAD & RESEPSI + MAPS -->
+    <div class="card">
+      <h3>Akad & Resepsi</h3>
+      <p><strong>Hari/Tanggal:</strong> Sabtu, 20 Juni 2026</p>
+      <p><strong>Waktu:</strong> 09.00 WIB – Selesai</p>
+      <p><strong>Lokasi:</strong> Gedung Warna Warni No. 65, Jakarta Timur</p>
+      <a href="https://maps.app.goo.gl/nX81aFKxA9NjGiFP9" target="_blank" class="btn btn-outline">📍 Lihat Lokasi</a>
+      <!-- tautan mengarah ke google maps dengan koordinat umum jakarta (lintang -6.2, bujur 106.8) -->
+    </div>
+  </section>
+
+  <!-- KONFIRMASI KEHADIRAN -->
+  <section>
+    <h2>Konfirmasi Kehadiran</h2>
+    <div class="card" style="padding-bottom: 35px;">
+      <form id="rsvpForm" onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Nama lengkap Anda" id="nama" required>
+        <input type="number" placeholder="Jumlah tamu (termasuk Anda)" id="jumlah" min="1" max="10" required>
+        <textarea placeholder="Ucapan & doa untuk kami" id="ucapan"></textarea>
+        <button type="submit" class="btn btn-primary">Kirim Konfirmasi</button>
+      </form>
+      <p id="thankYouMsg" style="margin-top: 20px; font-style: italic; color: #8c5a3c; min-height: 24px;"></p>
+    </div>
+  </section>
+
+  <!-- FOOTER PENUTUP -->
+  <footer>
+    Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Anda berkenan hadir dan memberikan doa restu.
+    <br><br>
+    Wassalamu’alaikum Warahmatullahi Wabarakatuh
+    <br><br>
+    <span style="display: inline-block; margin-top: 20px; font-size: 0.9rem;">© M.James & Khurin In – 2026</span>
+  </footer>
+
+  <!-- JavaScript: feedback RSVP yang lebih halus + fallback gambar -->
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();                     // mencegah reload / pengiriman form
+      
+      const namaField = document.getElementById('nama');
+      const jumlahField = document.getElementById('jumlah');
+      const ucapanField = document.getElementById('ucapan');
+      const thankYou = document.getElementById('thankYouMsg');
+
+      const nama = namaField.value.trim();
+      const jumlah = jumlahField.value.trim();
+      
+      if (nama === '' || jumlah === '') {
+        alert('Mohon isi nama dan jumlah tamu.');
+        return;
+      }
+
+      // tampilkan pesan terima kasih yang manis
+      thankYou.innerHTML = `❤️ Terima kasih, <strong>${nama}</strong>. Doa dan kehadiran Anda sangat berarti.`;
+
+      // reset form setelah feedback
+      namaField.value = '';
+      jumlahField.value = '';
+      ucapanField.value = '';
+
+      // (opsional) hilangkan pesan setelah 8 detik
+      setTimeout(() => {
+        thankYou.innerHTML = '';
+      }, 8000);
+    }
+
+    // Smooth scroll untuk semua anchor (jika ada internal link)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    // Jika header image error, kita sudah pakai onerror; tambahan fallback kalau gambar pertama gagal
+    // header fallback styling via class
+  </script>
+
+  <!-- fallback tambahan untuk header jika gambar tidak ada (onerror sudah ada, tapi kita pastikan) -->
+  <style>
+    .fallback-header {
+      background: linear-gradient(125deg, #3e2f27, #7d5f4b);
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+    .fallback-header img {
+      display: none;
+    }
+  </style>
+  <noscript>
+    <style>#thankYouMsg { display: none; }</style>
+    <div style="background:#f0e2d4; padding:10px; border-radius:99px; max-width:500px; margin:20px auto;">Formulir membutuhkan JavaScript untuk feedback langsung, tetapi data tidak dikirim ke server. (Demo undangan)</div>
+  </noscript>
+</body>
+</html>
